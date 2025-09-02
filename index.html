@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      transition: background-color 0.3s ease;
+    }
+    .project-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="bg-dark text-white">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Tariq Elahi</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="vh-100 d-flex flex-column justify-content-center align-items-center text-center bg-dark text-white">
+  <h1 class="fw-bold">Hi, I'm Tariq</h1>
+  <p class="lead">HTML | JS | CSS</p>
+  <a href="#portfolio" class="btn btn-primary mt-3">View My Work</a>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4">
+        <img src="img/Tariq.jpg" class="rounded-5" alt="About Me" height="450">
+      </div>
+      <div class="col-lg-6">
+        <h2>About Me</h2>
+        <p>
+          I’m a dedicated web development student at Aptech, passionate about building clean, modern, and responsive websites. Skilled in HTML, CSS, JavaScript, and Bootstrap, I aim to secure internships or a strong career opportunity while continuously improving projects like TSFlix to make them better and long-lasting online. Beyond coding, I enjoy content creation and video editing, bringing a creative edge to my technical work.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-5 bg-dark">
+  <div class="container">
+    <h2 class="text-center text-white mb-5">My Projects</h2>
+    <div class="row" id="projectContainer">
+      <!-- Project Cards Loaded by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-dark text-white">
+  <div class="container">
+    <h2 class="text-center mb-5">Contact Me</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea class="form-control" rows="5" placeholder="Enter Your Massage"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="container mt-3 mb-3 bg-dark text-white">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>© <span id="year">2025</span> <span>Tariq Elahi</span>. All rights reserved.</div>
+      <div class="small text-light">Built with ❤️ • Clean, Responsive & Accessible</div>
+    </div>
+  </footer>
+
+<!-- Project Modal -->
+<div class="modal fad" id="projectModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="projectModalTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body bg-dark text-white">
+        <img id="projectModalImg" class="img-fluid mb-3" alt="Project Image">
+        <p id="projectModalDesc"></p>
+        <a id="projectDemoBtn" href="#" class="btn btn-primary me-2" target="_blank">Live Demo</a>
+        <!-- <a id="projectCodeBtn" href="#" class="btn btn-warning" target="_blank">Source Code</a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Navbar scroll animation
+  window.addEventListener('scroll', function () {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Project data
+  const projects = [
+    {
+      title: "TS Flix",
+      img: "img/TS-Flix.png",
+      desc: "TSFlix is a free movie streaming website inspired by Netflix, offering a wide range of films and shows with a clean interface, smooth performance, and unlimited entertainment without subscriptions.",
+      demo: "https://tsflix.free.nf/",
+      code: "#"
+    },
+    {
+      title: "WalkAura",
+      img: "img/WalkAura.png",
+      desc: "Walkaura is an innovative smart-shoe project created for an Aptech competition, designed to track steps, enhance comfort, and provide real-time feedback, blending technology with footwear for a modern walking experience.",
+      demo: "https://mrtariq00.github.io/WalkAura/",
+      code: "#"
+    },
+    {
+      title: "Petbot",
+      img: "img/PetBot.png",
+      desc: "Petbot is a bottle, jar, and glass product showcase platform developed for an Aptech semester-end exam, featuring an organized catalog, modern design, and user-friendly interface for streamlined product browsing.",
+      demo: "https://mrtariq00.github.io/petbot/",
+      code: "#"
+    },
+    // {
+    //   title: "Netflix Clone",
+    //   img: "img/netflix.png",
+    //   desc: "A responsive Netflix remake built with HTML, CSS, featuring a sleek interface, dynamic content sections, and smooth user experience — demonstrating modern front-end skills and clean web design.",
+    //   demo: "https://mrtariq00.github.io/Tariq-coding-journey/netflix/",
+    //   code: "#"
+    // },
+    // {
+    //   title: "Amazon Clone",
+    //   img: "img/Amazon.png",
+    //   desc: "A responsive Amazon clone built using HTML, CSS featuring product listings, modern UI, and smooth navigation — showcasing front-end skills and e-commerce design concepts.",
+    //   demo: "https://mrtariq00.github.io/Tariq-coding-journey/Amazon/",
+    //   code: "#"
+    // },
+    // {
+    //   title: ",
+    //   img: "",
+    //   desc: "",
+    //   demo: "#",
+    //   code: "#"
+    // }
+  ];
+
+  const container = document.getElementById('projectContainer');
+  projects.forEach((project, index) => {
+    container.innerHTML += `
+      <div class="col-md-4 mb-4">
+        <div class="card project-card shadow-sm bg-dark text-white border-light">
+          <img src="${project.img}" class="card-img-top" alt="${project.title}">
+          <div class="card-body">
+            <h5 class="card-title">${project.title}</h5>
+            <p class="card-text">${project.desc}</p>
+            <button class="btn btn-primary" onclick="showProject(${index})">Showcase</button>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  function showProject(index) {
+    const project = projects[index];
+    document.getElementById('projectModalTitle').textContent = project.title;
+    document.getElementById('projectModalImg').src = project.img;
+    document.getElementById('projectModalDesc').textContent = project.desc;
+    document.getElementById('projectDemoBtn').href = project.demo;
+    // document.getElementById('projectCodeBtn').href = project.code;
+    const modal = new bootstrap.Modal(document.getElementById('projectModal'));
+    modal.show();
+  }
+</script>
+</body>
+</html>
